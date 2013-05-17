@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+
+<html>
+	
+	<head>
+		<title>The history of aeronautics</title>
+
+		<meta charset="utf-8" />
+		<meta name="description" content="A parallax scrolling experiment using jQuery" />
+
+		<link rel="stylesheet" media="all" href="css/main.css" />
+
+		<script src="js/modernizr.custom.37797.js"></script> 
+		<!-- Grab Google CDN's jQuery. fall back to local if necessary --> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+		<script>!window.jQuery && document.write('<script src="/js/jquery-1.6.1.min.js"><\/script>')</script>
+		<script src="js/parallax.js"></script>
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+			
+			
+			
+
+			
+			<div id="content">
+				<article id="manned-flight">
+					
+				</article>
+				
+				<article id="frameless-parachute">
+					
+				</article>
+				
+				<article id="english-channel">
+					
+				</article>
+				
+				<article id="about">
+					
+				</article>
+			</div>
+			
+			<!-- Parallax foreground -->
+			<div id="parallax-bg3">
+				<img id="bg3-1" src="buble1.png" alt="Montgolfier hot air balloon"/>
+				
+				<img id="bg3-2" src="buble1.png"  alt="Frameless parachute"/>
+				
+				<img id="bg3-3" src="buble1.png"  alt="Blanchard's air balloon"/>
+				
+				<img id="bg3-4" src="buble1.png" alt="Landscape with trees and cows"/>
+				
+			</div>
+			
+			<!-- Parallax  midground clouds -->
+			<div id="parallax-bg2">
+				
+				
+				
+				
+				<img id="bg3-12" src="bubble2.png" alt="Montgolfier hot air balloon"/>
+				<img id="bg3-22" src="bubble2.png" alt="Montgolfier hot air balloon"/>
+				<img id="bg3-32" src="bubble2.png" alt="Montgolfier hot air balloon"/>
+				<img id="bg3-42" src="bubble2.png" alt="Montgolfier hot air balloon"/>
+			</div>
+			
+			<!-- Parallax  background clouds -->
+			<div id="parallax-bg1">
+				
+				
+				<img id="bg1-12" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-22" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-32" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-42" src="bubble3.png" alt="cloud"/>
+				
+				<img id="bg1-13" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-23" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-33" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-43" src="bubble3.png" alt="cloud"/>
+				
+				<img id="bg1-231" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-331" src="bubble3.png" alt="cloud"/>
+				<img id="bg1-431" src="bubble3.png" alt="cloud"/>
+			</div>
+		
+		</div>
+	
+	</body>
+  
+</html>
+
+<script>
+$(document).ready(function() {
+	
+	redrawDotNav();
+	
+	/* Scroll event handler */
+    $(window).bind('scroll',function(e){
+    	parallaxScroll();
+		redrawDotNav();
+    });
+    
+	
+    
+
+    
+});
+
+/* Scroll the background layers */
+function parallaxScroll(){
+	var scrolled = $(window).scrollTop();
+	$('#parallax-bg1').css('top',(0-(scrolled*.25))+'px');
+	$('#parallax-bg2').css('top',(0-(scrolled*.5))+'px');
+	$('#parallax-bg3').css('top',(0-(scrolled*.75))+'px');
+}
+
+/* Set navigation dots to an active state as the user scrolls */
+function redrawDotNav(){
+	var section1Top =  0;
+	// The top of each section is offset by half the distance to the previous section.
+	var section2Top =  $('#frameless-parachute').offset().top - (($('#english-channel').offset().top - $('#frameless-parachute').offset().top) / 2);
+	var section3Top =  $('#english-channel').offset().top - (($('#about').offset().top - $('#english-channel').offset().top) / 2);
+	var section4Top =  $('#about').offset().top - (($(document).height() - $('#about').offset().top) / 2);;
+	$('nav#primary a').removeClass('active');
+	
+	
+}
+</script>
